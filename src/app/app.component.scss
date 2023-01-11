@@ -1,0 +1,35 @@
+img {
+  width: 120px;
+}
+.toolbar{
+  height: 100px;
+  background-color: rgba(34,231,29,255);
+  color: green
+}
+.label-name{
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 50px;
+  margin: 0 60% 0 30%;
+}
+.animation{
+  width: 100%;
+}
+.animation-scooter{
+  margin: 0 0 0 -400px;
+  width: 30%;
+  height: 30%;
+  transition: transform 10s ease-in;
+  animation: left-to-right 5s ease-in infinite forwards;
+}
+
+@keyframes left-to-right {
+  100% {
+    transform: translateX(450%);
+  }
+}
+.price{
+  text-align: center;
+}
+
+
