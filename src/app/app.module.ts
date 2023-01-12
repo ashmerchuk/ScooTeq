@@ -8,10 +8,12 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
+import { IncrementpriceComponent } from './incrementprice/incrementprice.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    IncrementpriceComponent
   ],
   imports: [
     BrowserModule,

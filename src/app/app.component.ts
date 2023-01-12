@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http'
 
 })
 export class AppComponent implements OnInit{
-
   title = 'ScooTeq';
   price = 0
   ngOnInit(){
@@ -17,13 +16,9 @@ export class AppComponent implements OnInit{
   }
   incrementPrice(){
     this.price += 0.15;
-    // console.log("this.price ", this.price.toFixed(2))
-
     setTimeout(() => {
       this.incrementPrice()
 
     }, 1000);
-    // setTimeout(this.incrementPrice,2000);
-  
   }
 }
