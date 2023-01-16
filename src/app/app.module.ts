@@ -9,11 +9,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { IncrementPriceComponent } from './increment-price/increment-price.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {DialogPriceComponent} from './dialog-price/dialog-price.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    IncrementPriceComponent
+    IncrementPriceComponent,
+    DialogPriceComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,9 +25,10 @@ import { IncrementPriceComponent } from './increment-price/increment-price.compo
     MatIconModule,
     MatButtonModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

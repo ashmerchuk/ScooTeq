@@ -1,4 +1,6 @@
 import { Component , OnInit} from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import {DialogPriceComponent} from "../dialog-price/dialog-price.component";
 
 @Component({
   selector: 'app-increment-price',
@@ -6,6 +8,7 @@ import { Component , OnInit} from '@angular/core';
   styleUrls: ['./increment-price.component.scss']
 })
 export class IncrementPriceComponent implements OnInit{
+  constructor(private dialogRef : MatDialog){}
   isStart = false
   isStop = false
    timeoutId: any;
@@ -23,12 +26,16 @@ export class IncrementPriceComponent implements OnInit{
     }else{
       this.isStart = false
       this.isStop = true
+<<<<<<< HEAD
       this.price = Math.round(this.price * 100) / 100
 
      console.log(" this.price  stop", this.price)
 
+=======
+      this.price.toFixed(2)
+>>>>>>> eba33479f44e8d850cfc98a138f86238d89bdda0
       clearTimeout(this.timeoutId)
-
+      this.dialogRef.open(DialogPriceComponent)
     }
   }
   incrementPrice(){
@@ -42,9 +49,6 @@ export class IncrementPriceComponent implements OnInit{
     // setTimeout(this.incrementPrice,2000);
   return this.timeoutId
   }
-
-
-  
   pausePrice(){
     if(!this.isPause){
       this.isPause = true
@@ -54,8 +58,8 @@ export class IncrementPriceComponent implements OnInit{
       this.isPause = false
       this.incrementPrice()
     }
-  
+
   }
 
-  
+
 }
