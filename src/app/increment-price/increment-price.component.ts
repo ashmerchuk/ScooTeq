@@ -26,27 +26,21 @@ export class IncrementPriceComponent implements OnInit{
     }else{
       this.isStart = false
       this.isStop = true
-<<<<<<< HEAD
       this.price = Math.round(this.price * 100) / 100
 
      console.log(" this.price  stop", this.price)
 
-=======
       this.price.toFixed(2)
->>>>>>> eba33479f44e8d850cfc98a138f86238d89bdda0
       clearTimeout(this.timeoutId)
       this.dialogRef.open(DialogPriceComponent)
     }
   }
   incrementPrice(){
     this.price += 0.15;
-    // console.log("this.price ", this.price.toFixed(2))
-
     this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
     }, 1000);
-    // setTimeout(this.incrementPrice,2000);
   return this.timeoutId
   }
   pausePrice(){
