@@ -7,33 +7,18 @@
     <span class="label-name">ScooTeq</span>
 </mat-toolbar>
 </p>
-<button *ngIf="!isStart" (click)="changeStatusStart()">
-
-  Start Price
-
-</button>
-
-<button *ngIf="isStart" (click)="pausePrice()">
-
-  Pause
-
- </button>
-
-<button *ngIf="isStart" (click)="changeStatusStart()">
-
- Stop
-
-</button>
 
 
+    <div>
+      <app-increment-price></app-increment-price>
+    </div>
 
 
-
- <div *ngIf="isStart">
+ <!-- <div *ngIf="isStart">
   <h2 class="price" >
     Your Price for trip is:  <app-increment-price></app-increment-price> €
   </h2>
- </div>
+ </div> -->
 
 
 

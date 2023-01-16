@@ -1,1 +1,26 @@
-{{price.toFixed(2)}}
+ <div>
+    <button *ngIf="!isStart" (click)="changeStatusStart()">
+
+        Start Price
+      
+      </button>
+      
+      
+      <button *ngIf="isStart" (click)="changeStatusStart()">
+      
+       Stop
+      
+      </button>
+      
+
+    <button mat-raised-button color="accent" (click)="pausePriceT()">
+        Pause
+       </button>
+ </div>
+
+ <h2 class="price" >
+    Your Price for trip is:  {{price.toFixed(2)}}  €
+  </h2>
+
+
+

@@ -6,10 +6,32 @@ import { Component , OnInit} from '@angular/core';
   styleUrls: ['./increment-price.component.scss']
 })
 export class IncrementPriceComponent implements OnInit{
+  isStart = false
 
   price = 0
   ngOnInit(){
-    this.incrementPrice()
+    // this.incrementPrice()
+  }
+
+
+
+  pausePriceT(){
+    
+    
+
+    console.log(" this.pausePriceVar T ",this.price)
+  }
+
+
+
+  changeStatusStart(){
+    if(!this.isStart){
+      this.isStart = true
+      this.incrementPrice()
+
+    }else{
+      this.isStart = false
+    }
   }
   incrementPrice(){
     this.price += 0.15;

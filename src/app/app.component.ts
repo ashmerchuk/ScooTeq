@@ -15,21 +15,21 @@ export class AppComponent {
   price = 0;
   pausePriceVar = 0
 
-  changeStatusStart(){
-    if(!this.isStart){
-      this.isStart = true
+  // changeStatusStart(){
+  //   if(!this.isStart){
+  //     this.isStart = true
 
-    }else{
-      this.isStart = false
-    }
-  }
+  //   }else{
+  //     this.isStart = false
+  //   }
+  // }
 
-  pausePrice(){
+  // pausePrice(){
     
-    this.pausePriceVar = this.price
+  //   this.pausePriceVar = this.price
 
-    console.log(" this.pausePriceVar ",this.pausePriceVar)
-  }
+  //   console.log(" this.pausePriceVar ",this.pausePriceVar)
+  // }
   // ngOnInit(){
   //   this.incrementPrice()
   // }
