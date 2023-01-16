@@ -9,19 +9,30 @@
        Stop
       </button>
       
+      <div *ngIf="isStart"  style="display:inline-block">
       
+            <button style="display:inline-block" class="btn-inline" *ngIf="!isPause"  class="btn btn-warning"   (click)="pausePrice()">
+                Pause
+               </button>
+       
+       
+            <button style="display:inline-block"  class="btn btn-secondary"  *ngIf="isPause"  (click)="pausePrice()">
+                Continute
+               </button>
+   
+      
+      </div>
     <!-- <button *ngIf="!isPause" mat-raised-button color="accent" (click)="pausePrice()"> -->
-    <button *ngIf="!isPause"  class="btn btn-warning"   (click)="pausePrice()">
-        Pause
-       </button>
-    <button class="btn btn-secondary"  *ngIf="isPause"  (click)="pausePrice()">
-        Continute
-       </button>
+ 
   
  </div>
 
- <h2 class="price" class="for-button">
+ <h2 *ngIf="!isStop" class="price" class="for-button">
     Your Price for trip is:  {{price.toFixed(2)}}  €
+  </h2>
+
+  <h2 *ngIf="isStop" class="price" class="for-button">
+    Trip done with:  {{price.toFixed(2)}}  €
   </h2>
 
 
