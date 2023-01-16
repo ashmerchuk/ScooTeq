@@ -1,4 +1,4 @@
- <div>
+ <div *ngIf="!isStop">
     <button *ngIf="!isStart" (click)="changeStatusStart()">
 
         Start Price
@@ -12,7 +12,7 @@
       
       </button>
       
-
+      
     <button *ngIf="!isPause" mat-raised-button color="accent" (click)="pausePrice()">
         Pause
        </button>
@@ -23,8 +23,13 @@
        </button>
  </div>
 
- <h2 class="price" >
+ <h2 class="price" *ngIf="!isStop" >
     Your Price for trip is:  {{price.toFixed(2)}}  €
+  </h2>
+
+
+  <h2 class="price" *ngIf="isStop" >
+    You habe done the Trip with  {{price.toFixed(2)}}  €
   </h2>
 
 

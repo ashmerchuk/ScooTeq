@@ -7,6 +7,7 @@ import { Component , OnInit} from '@angular/core';
 })
 export class IncrementPriceComponent implements OnInit{
   isStart = false
+  isStop = false
    timeoutId: any;
    isPause = false
 
@@ -21,6 +22,11 @@ export class IncrementPriceComponent implements OnInit{
 
     }else{
       this.isStart = false
+      this.isStop = true
+     this.price.toFixed(2)
+
+      clearTimeout(this.timeoutId)
+
     }
   }
   incrementPrice(){
