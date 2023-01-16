@@ -7,23 +7,13 @@ import { Component , OnInit} from '@angular/core';
 })
 export class IncrementPriceComponent implements OnInit{
   isStart = false
+   timeoutId: any;
+   isPause = false
 
   price = 0
   ngOnInit(){
     // this.incrementPrice()
   }
-
-
-
-  pausePriceT(){
-    
-    
-
-    console.log(" this.pausePriceVar T ",this.price)
-  }
-
-
-
   changeStatusStart(){
     if(!this.isStart){
       this.isStart = true
@@ -37,11 +27,27 @@ export class IncrementPriceComponent implements OnInit{
     this.price += 0.15;
     // console.log("this.price ", this.price.toFixed(2))
 
-    setTimeout(() => {
+    this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
     }, 1000);
     // setTimeout(this.incrementPrice,2000);
+  return this.timeoutId
+  }
+
+
+  
+  pausePrice(){
+    if(!this.isPause){
+      this.isPause = true
+      console.log(" this.pausePriceVar T ",this.price)
+      clearTimeout(this.timeoutId)
+    }else{
+      this.isPause = false
+      this.incrementPrice()
+    }
   
   }
+
+  
 }

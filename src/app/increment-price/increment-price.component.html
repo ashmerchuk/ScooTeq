@@ -13,8 +13,13 @@
       </button>
       
 
-    <button mat-raised-button color="accent" (click)="pausePriceT()">
+    <button *ngIf="!isPause" mat-raised-button color="accent" (click)="pausePrice()">
         Pause
+       </button>
+
+       
+    <button *ngIf="isPause" mat-raised-button color="accent" (click)="pausePrice()">
+        Continute
        </button>
  </div>
 
