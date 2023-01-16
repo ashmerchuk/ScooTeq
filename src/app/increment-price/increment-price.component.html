@@ -1,31 +1,24 @@
- <div>
-    <button *ngIf="!isStart" (click)="changeStatusStart()">
-
+ <div class="for-button">
+    <button class="btn btn-info" *ngIf="!isStart" (click)="changeStatusStart()">
         Start Price
-      
       </button>
-      
-      
-      <button *ngIf="isStart" (click)="changeStatusStart()">
-      
+      <button  class="btn btn-danger"  *ngIf="isStart" (click)="changeStatusStart()">
        Stop
-      
       </button>
-      
-
-    <button *ngIf="!isPause" mat-raised-button color="accent" (click)="pausePrice()">
+    <button  class="btn btn-warning"  *ngIf="!isPause"  (click)="pausePrice()">
         Pause
        </button>
-
-       
-    <button *ngIf="isPause" mat-raised-button color="accent" (click)="pausePrice()">
+    <button class="btn btn-secondary"  *ngIf="isPause"  (click)="pausePrice()">
         Continute
        </button>
+   <h2 class="price">
+     Your Price for trip is:  {{price.toFixed(2)}}  €
+   </h2>
  </div>
 
- <h2 class="price" >
-    Your Price for trip is:  {{price.toFixed(2)}}  €
-  </h2>
+
+
+
 
 
 
