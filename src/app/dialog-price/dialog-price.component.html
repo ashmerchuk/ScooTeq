@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Your trip is finished</h1>
 <div mat-dialog-content>
-  You should pay:  €
+  You should pay: {{ this.data.price }} €
 </div>
 <div mat-dialog-actions>
-  <button class="btn btn-info"> Pay </button>
+  <button class="btn btn-info" (click)="closeDialog()"> Pay </button>
 </div>

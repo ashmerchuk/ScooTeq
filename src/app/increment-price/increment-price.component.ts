@@ -32,7 +32,11 @@ export class IncrementPriceComponent implements OnInit{
 
       this.price.toFixed(2)
       clearTimeout(this.timeoutId)
-      this.dialogRef.open(DialogPriceComponent)
+      this.dialogRef.open(DialogPriceComponent, {
+        data:{
+          price: this.price
+        }
+      })
     }
   }
   incrementPrice(){
@@ -52,8 +56,5 @@ export class IncrementPriceComponent implements OnInit{
       this.isPause = false
       this.incrementPrice()
     }
-
   }
-
-
 }

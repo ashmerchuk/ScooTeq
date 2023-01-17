@@ -1,5 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {IncrementPriceComponent} from "../increment-price/increment-price.component";
 
 
 @Component({
@@ -7,7 +8,13 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   templateUrl: './dialog-price.component.html',
   styleUrls: ['./dialog-price.component.scss']
 })
-export class DialogPriceComponent implements OnInit{
-  // constructor(@Inject (MAT_DIALOG_DATA) public data) {}
-  ngOnInit() : void {}
+
+export class DialogPriceComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialogRef<IncrementPriceComponent>) {}
+
+  closeDialog(){
+    this.dialogRef.close();
+  }
+
+
 }
