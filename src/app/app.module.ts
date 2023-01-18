@@ -10,7 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
 import { IncrementPriceComponent } from './increment-price/increment-price.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import {DialogPriceComponent} from './dialog-price/dialog-price.component'
+import {DialogPriceComponent} from './dialog-price/dialog-price.component';
+import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {DialogPriceComponent} from './dialog-price/dialog-price.component'
     NgbModule,
     FormsModule,
     MatDialogModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

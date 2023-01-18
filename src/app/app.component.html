@@ -1,18 +1,46 @@
-<p>
-  <mat-toolbar class="toolbar" color="primary">
-    <a href="#">
-      <img src="../assets/img/sc_notext.png"/>
+<nav class=" mainnavbar navbar navbar-expand-lg navbar-dark p-3" id="headerNav">
+  <div class="container-fluid">
+    <a class="navbar-brand d-block d-lg-none" href="#">
+      <img src="/static_files/images/logos/logo_2_white.png" height="80"/>
     </a>
-    <span class="example-spacer"></span>
-    <span class="label-name">ScooTeq</span>
-</mat-toolbar>
-</p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div>
-      <app-increment-price></app-increment-price>
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 active" aria-current="page" href="#">Trip</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="#">Calculate electricity</a>
+        </li>
+        <li class="nav-item d-none d-lg-block">
+          <a class="nav-link mx-2" href="#">
+            <img src="../assets/img/sc_notext.png"/>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="#">Products</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link mx-2" href="#" aria-expanded="false">
+            Testing drive
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<br>
+
+<div>
+  <app-increment-price></app-increment-price>
+</div>
 
 <div class="animation">
-   <img class="animation-scooter" src="assets/img/sc_notext.png">
+  <img class="animation-scooter" src="assets/img/sc_notext.png">
 </div>
 

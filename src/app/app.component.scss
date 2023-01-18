@@ -38,5 +38,15 @@ img {
 .for-button{
   text-align: center;
 }
-
-
+.nav-link{
+  color: white;
+  font-size: 25px;
+}
+.mainnavbar{
+  background-color: rgb(34, 206, 28);
+}
+@media screen and (min-width:992px){
+  .nav-item {
+    line-height:80px;
+  }
+}
