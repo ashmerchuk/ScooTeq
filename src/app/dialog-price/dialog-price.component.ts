@@ -14,6 +14,8 @@ export class DialogPriceComponent {
 
   closeDialog(){
     this.dialogRef.close();
+
+    window.location.reload();
   }
 
 

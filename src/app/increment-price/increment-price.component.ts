@@ -11,10 +11,10 @@ export class IncrementPriceComponent implements OnInit{
   constructor(private dialogRef : MatDialog){}
   isStart = false
   isStop = false
-   timeoutId: any;
-   isPause = false
-
+  timeoutId: any;
+  isPause = false
   price = 0
+
   ngOnInit(){
     // this.incrementPrice()
   }
