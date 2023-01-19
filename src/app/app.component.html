@@ -1,6 +1,6 @@
 <nav class=" mainnavbar navbar navbar-expand-lg navbar-dark p-3" id="headerNav">
   <div class="container-fluid">
-    <a class="navbar-brand d-block d-lg-none" href="#">
+    <a class="navbar-brand d-block d-lg-none" href="#" (click)="MainScreenOn()">
       <img src="/static_files/images/logos/logo_2_white.png" height="80"/>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -11,21 +11,21 @@
     <div class=" collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto ">
         <li class="nav-item">
-          <a class="nav-link mx-2 active" aria-current="page" href="#">Trip</a>
+          <a class="nav-link mx-2 active" aria-current="page" href="#" (click)="TripOn()">Trip</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Calculate electricity</a>
+          <a class="nav-link mx-2" href="#" (click)="CalculateElectricityOn()">Calculate electricity</a>
         </li>
         <li class="nav-item d-none d-lg-block">
-          <a class="nav-link mx-2" href="#">
+          <a class="nav-link mx-2" href="#" (click)="MainScreenOn()">
             <img src="../assets/img/sc_notext.png"/>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Products</a>
+          <a class="nav-link mx-2" href="#" (click)="ProductsOn()">Products</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link mx-2" href="#" aria-expanded="false">
+          <a class="nav-link mx-2" href="#" (click)="TestingDriveOn()">
             Testing drive
           </a>
         </li>
@@ -33,13 +33,19 @@
     </div>
   </div>
 </nav>
-
 <br>
-
-<div>
+<div *ngIf="isTrip">
+  <app-trip></app-trip>
+</div>
+<div *ngIf="isCalculateElectricity">
+  <app-claculate-electricity></app-claculate-electricity>
+</div>
+<div *ngIf="isProducts">
+  <app-products></app-products>
+</div>
+<div *ngIf="isTestingDrive">
   <app-increment-price></app-increment-price>
 </div>
-
 <div class="animation">
   <img class="animation-scooter" src="assets/img/sc_notext.png">
 </div>

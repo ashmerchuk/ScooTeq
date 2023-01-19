@@ -11,13 +11,19 @@ import {FormsModule} from "@angular/forms";
 import { IncrementPriceComponent } from './increment-price/increment-price.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogPriceComponent} from './dialog-price/dialog-price.component';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
+import { ClaculateElectricityComponent } from './claculate-electricity/claculate-electricity.component';
+import { TripComponent } from './trip/trip.component';
+import { ProductsComponent } from './products/products.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     IncrementPriceComponent,
     DialogPriceComponent,
+    ClaculateElectricityComponent,
+    TripComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
