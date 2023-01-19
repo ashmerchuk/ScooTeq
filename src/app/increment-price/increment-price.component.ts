@@ -40,11 +40,11 @@ export class IncrementPriceComponent implements OnInit{
     }
   }
   incrementPrice(){
-    this.price += 0.15;
+    this.price += 0.05;
     this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
-    }, 1000);
+    }, 300);
   return this.timeoutId
   }
   pausePrice(){
