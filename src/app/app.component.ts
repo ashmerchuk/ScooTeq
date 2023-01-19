@@ -14,39 +14,28 @@ export class AppComponent {
   title = 'ScooTeq';
   price = 0;
   pausePriceVar = 0;
-  isProducts = false;
-  isTestingDrive = false;
-  isTrip = false;
-  isCalculateElectricity = false;
+  public navPagesDefault = {isProducts: false, isTestingDrive: false,  isTrip: false,  isCalculateElectricity : false };
+  public navPagesUpdated = {...this.navPagesDefault};
+
 
   TripOn(){
-    this.isTestingDrive = false;
-    this.isProducts = false;
-    this.isTrip = true;
-    this.isCalculateElectricity = false;
+    this.navPagesUpdated = {...this.navPagesDefault};
+    this.navPagesUpdated.isTrip = true;
   }
   CalculateElectricityOn(){
-    this.isTestingDrive = false;
-    this.isProducts = false;
-    this.isTrip = false;
-    this.isCalculateElectricity = true;
+    this.navPagesUpdated = {...this.navPagesDefault};
+    this.navPagesUpdated.isCalculateElectricity = true;
   }
   ProductsOn(){
-    this.isTestingDrive = false;
-    this.isProducts = true;
-    this.isTrip = false;
-    this.isCalculateElectricity = false;
+    this.navPagesUpdated = {...this.navPagesDefault};
+    this.navPagesUpdated.isProducts = true;
+
   }
   TestingDriveOn(){
-    this.isTestingDrive = true;
-    this.isProducts = false;
-    this.isTrip = false;
-    this.isCalculateElectricity = false;
+    this.navPagesUpdated = {...this.navPagesDefault};
+    this.navPagesUpdated.isTestingDrive = true;
   }
   MainScreenOn(){
-    this.isTestingDrive = false;
-    this.isProducts = false;
-    this.isTrip = false;
-    this.isCalculateElectricity = false;
+    this.navPagesUpdated = {...this.navPagesDefault};
   }
 }

@@ -34,16 +34,16 @@
   </div>
 </nav>
 <br>
-<div *ngIf="isTrip">
+<div *ngIf="navPagesUpdated.isTrip">
   <app-trip></app-trip>
 </div>
-<div *ngIf="isCalculateElectricity">
+<div *ngIf="navPagesUpdated.isCalculateElectricity">
   <app-claculate-electricity></app-claculate-electricity>
 </div>
-<div *ngIf="isProducts">
+<div *ngIf="navPagesUpdated.isProducts">
   <app-products></app-products>
 </div>
-<div *ngIf="isTestingDrive">
+<div *ngIf="navPagesUpdated.isTestingDrive">
   <app-increment-price></app-increment-price>
   <div class="animation">
     <img class="animation-scooter" src="assets/img/sc_notext.png">
