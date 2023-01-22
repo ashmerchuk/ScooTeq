@@ -1,0 +1,39 @@
+ng-select {
+  margin-left: 25px;
+  font-size: 16px;
+  color: blue;
+  background-color:burlywood ;
+  max-width: 20vw;
+  height: 45px;
+}
+
+ng-select .ng-dropdown-panel {
+  background-color: red;
+}
+
+ng-select .ng-dropdown-panel .ng-dropdown-list {
+  color: black;
+}
+
+ng-select .ng-dropdown-panel .ng-dropdown-list .ng-option {
+  background-color: #810e0e;
+  color: black;
+}
+
+ng-select .ng-dropdown-panel .ng-dropdown-list .ng-option.ng-option-selected {
+  background-color: #007bff;
+  color: rgb(95, 12, 12);
+}
+
+
+
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

@@ -2,6 +2,7 @@ import { Component , OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import {DialogPriceComponent} from "../dialog-price/dialog-price.component";
 
+
 @Component({
   selector: 'app-increment-price',
   templateUrl: './increment-price.component.html',

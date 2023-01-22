@@ -16,6 +16,23 @@ import { ClaculateElectricityComponent } from './claculate-electricity/claculate
 import { TripComponent } from './trip/trip.component';
 import { ProductsComponent } from './products/products.component'
 
+
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+import { MatInputModule } from '@angular/material/input';
+
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +52,13 @@ import { ProductsComponent } from './products/products.component'
     FormsModule,
     MatDialogModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    NgSelectModule,
+    NgxMatSelectSearchModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
