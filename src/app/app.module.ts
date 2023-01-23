@@ -12,11 +12,9 @@ import { IncrementPriceComponent } from './increment-price/increment-price.compo
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogPriceComponent} from './dialog-price/dialog-price.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ClaculateElectricityComponent } from './claculate-electricity/claculate-electricity.component';
 import { TripComponent } from './trip/trip.component';
 import { ProductsComponent } from './products/products.component'
-
-
+import { CalculatorModule } from './calculator/calculator.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,7 +36,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     AppComponent,
     IncrementPriceComponent,
     DialogPriceComponent,
-    ClaculateElectricityComponent,
     TripComponent,
     ProductsComponent,
   ],
@@ -58,7 +55,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     NgSelectModule,
     NgxMatSelectSearchModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    CalculatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
