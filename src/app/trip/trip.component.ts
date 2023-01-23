@@ -44,39 +44,6 @@ interface Food {
 export class TripComponent implements OnInit  {
 
 
-
-  // myControl = new FormControl('');
-
-
-
-// addresses : Address[] = zipcodes
-
-// // options: this.addresses;
-
-
-// //   // options: string[] = ['One', 'Two', 'Three'];
-//   filteredOptions: Observable<string[]> | undefined;
-
-//   ngOnInit() {
-//     this.filteredOptions = this.myControl.valueChanges.pipe(
-//       startWith(''),
-//       map(value => this._filter(value || '')),
-//     );
-//   }
-
-//   private _filter(value: string): string[] {
-//     const filterValue = value.toLowerCase();
-
-//     // option.zipcode => option.zipcode.toLowerCase().includes(filterValue)
-//     return this.addresses.filter(ad => {
-//     ad.zipcode.toLowerCase().includes(filterValue)
-//     });
-//   },
-
-
-
-
-
 myControl = new FormControl();
 myControlEnd = new FormControl();
 // var tempArray = JSON.parse(JSON.stringify(mainArray));
@@ -116,7 +83,7 @@ ngOnInit() {
 
   this.filteredOptionsEnd = this.myControlEnd.valueChanges.pipe(
     startWith(""),
-    map(value => this._filterEnd(value))
+    map(valueEnd => this._filterEnd(valueEnd))
   );
 }
 
@@ -147,19 +114,27 @@ private _filterEnd(value: any) {
   );
 }
 
-displayFn(value: any) {
-  return value ? value.zipcode : undefined;
-}
+// displayFn(value: any) {
+//   return value ? value.zipcode : undefined;
+// }
 
 
 selectOption(e: MatAutocompleteSelectedEvent) {
+  console.log("e. st ",e)
+
   const item = e.option.value;
   console.log(item);
 }
 
 selectOptionEnd(e: MatAutocompleteSelectedEvent) {
+
+  console.log("e. ",e)
   const item = e.option.value;
   console.log("end ",item);
+}
+
+displayFn(address: any) : string {
+  return address.zipcode ? address.zipcode + ', '+address.place + ', '+ address.state : ''
 }
 
 
