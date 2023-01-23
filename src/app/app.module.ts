@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { DevicesConsumeCalculatorComponent } from './devices-consume-calculator/devices-consume-calculator.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -57,6 +58,7 @@ import { DevicesConsumeCalculatorComponent } from './devices-consume-calculator/
     NgxMatSelectSearchModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

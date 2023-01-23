@@ -1,1 +1,38 @@
-<p>devices-consume-calculator works!</p>
+<div class="calculator-main-container">
+  <div class="user-inputs-container">
+    <form [formGroup]="conditionsForm" class="conditions-form-container">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Netzspannung</mat-label>
+        <mat-select formControlName="voltageOutput">
+          <mat-option *ngFor="let voltage of voltageList" [value]="voltage">{{voltage}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Kosten je KWh (¢)</mat-label>
+        <input matInput min="1" formControlName="kwhCost" type="number">
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Nutzungsstunden pro Woche</mat-label>
+        <input matInput min="1" max="168" formControlName="weeklyWorkHours" type="number">
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Zeitraum (wochen)</mat-label>
+        <input matInput min="1" formControlName="evaluatedPeriod" type="number">
+      </mat-form-field>
+
+    </form>
+    
+    <div>
+      
+    </div>
+  </div>
+
+
+  <mat-card class="calculator-results-container">
+    resultado
+  </mat-card>
+</div>
