@@ -9,6 +9,9 @@ import {FormControl, FormGroup} from '@angular/forms';
 
 import {ZIPCODES} from '../data/zipcodes'
 
+import * as geolib from 'geolib';
+
+
 interface Address {
   country_code: string;
   zipcode: string;
@@ -42,40 +45,32 @@ interface Food {
   styleUrls: ['./trip.component.scss']
 })
 export class TripComponent implements OnInit  {
+  fromStreet : string | undefined;
+  toStreet : string | undefined;
 
+  fromAddress : Address | undefined
+  toAddress : Address | undefined
+
+  distanceInKm : number | undefined
 
 myControl = new FormControl();
 myControlEnd = new FormControl();
 // var tempArray = JSON.parse(JSON.stringify(mainArray));
 
-options = JSON.parse(JSON.stringify(ZIPCODES)) 
-optionsEnd = JSON.parse(JSON.stringify(ZIPCODES)) 
-// optionsEnd = ZIPCODES
-// options = [{
-//     displayOrderId: 1,
-//     code: "1111",
-//     description: "1111 Description"
-//   },
-//   {
-//     displayOrderId: 2,
-//     code: "2222",
-//     description: "2222 Description"
-//   },
-//   {
-//     displayOrderId: 3,
-//     code: "3333",
-//     description: "3333 Description"
-//   },
-//   {
-//     displayOrderId: 4,
-//     code: "4444",
-//     description: "4444 Description"
-//   }
-// ];
+options = JSON.parse(JSON.stringify(ZIPCODES))
+optionsEnd = JSON.parse(JSON.stringify(ZIPCODES))
+
 filteredOptions: Observable<any> | undefined ;
 filteredOptionsEnd: Observable<any> | undefined ;
 
 ngOnInit() {
+
+  // const firstCoordinate = {latitude: 53.5439, longitude:10.0133};
+  // const secondCoordinate = {latitude: 53.5825, longitude:10.0625};
+
+  // const distanceInKm = geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 1;
+  // console.log(distanceInKm );
+
   this.filteredOptions = this.myControl.valueChanges.pipe(
     startWith(""),
     map(value => this._filter(value))
@@ -124,6 +119,7 @@ selectOption(e: MatAutocompleteSelectedEvent) {
 
   const item = e.option.value;
   console.log(item);
+  this.fromAddress = item
 }
 
 selectOptionEnd(e: MatAutocompleteSelectedEvent) {
@@ -131,10 +127,32 @@ selectOptionEnd(e: MatAutocompleteSelectedEvent) {
   console.log("e. ",e)
   const item = e.option.value;
   console.log("end ",item);
+
+  this.toAddress = item
 }
 
 displayFn(address: any) : string {
   return address.zipcode ? address.zipcode + ', '+address.place + ', '+ address.state : ''
+}
+
+
+onSubmit(){
+
+
+  if(this.fromAddress != undefined && this.toAddress != undefined){
+    const firstCoordinate = {latitude: this.fromAddress.latitude , longitude:this.fromAddress.longitude};
+    const secondCoordinate = {latitude: this.toAddress.latitude, longitude:this.toAddress.longitude};
+
+    this.distanceInKm = geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 2;
+  console.log(this.distanceInKm );
+
+  }
+
+  console.log("fromAddress ", this.fromAddress)
+  console.log("toAddress ", this.toAddress)
+
+  console.log("fromStreet ", this.fromStreet)
+  console.log("toStreet ", this.toStreet)
 }
 
 

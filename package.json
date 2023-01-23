@@ -26,6 +26,7 @@
     "@ng-select/ng-select": "^10.0.3",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "geolib": "^3.3.3",
     "ngx-mat-select-search": "^7.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -33,6 +33,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     NgSelectModule,
     NgxMatSelectSearchModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

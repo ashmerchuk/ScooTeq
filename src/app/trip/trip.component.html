@@ -11,22 +11,36 @@
 <div style="margin-left:50px">
 
   <form class="example-form">
-    <mat-form-field id="form-field-1" class="example-full-width" appearance="fill">
-      <mat-label>Start Point</mat-label>
-      <input type="text"
+    <div class="row" style="width:100%">
+      <div class="col-6">
+        <mat-form-field id="form-field-1" class="example-full-width" appearance="fill">
+          <mat-label>Start Point</mat-label>
+          <input type="text"
 
-             placeholder="Pick one"
-             aria-label="Address"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-autocomplete id="mat-autocomplete-1" #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='selectOption($event)'>
-        <mat-option id="mat-option-1" *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option.zipcode }} , {{option.place}} , {{option.state}}
-        </mat-option>
+                 placeholder="Zipcodes Ex:20095..."
+                 aria-label="Address"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete id="mat-autocomplete-1" #auto="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='selectOption($event)'>
+            <mat-option id="mat-option-1" *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option.zipcode }} , {{option.place}} , {{option.state}}
+            </mat-option>
 
-      </mat-autocomplete>
-    </mat-form-field>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>Street Nr.</mat-label>
+          <input matInput placeholder="Ex. Eupener Stieg 18" [(ngModel)] = "fromStreet" name="fromStreet">
+        </mat-form-field>
+
+      </div>
+    </div>
+
   </form>
 
 </div>
@@ -34,25 +48,43 @@
 
 <div style="margin-left:50px">
 
-  <form class="example-form">
-    <mat-form-field id="form-field-2" class="example-full-width" appearance="fill">
-      <mat-label>End Point</mat-label>
-      <input type="text"
+  <form (ngSubmit)="onSubmit()" class="example-form" >
 
-             placeholder="Zip codes"
-             aria-label="Address"
-             matInput
-             [formControl]="myControlEnd"
-             [matAutocomplete]="autoEnd">
-      <mat-autocomplete id="mat-autocomplete-2" #autoEnd="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='selectOptionEnd($event)'>
-        <mat-option id="mat-option-2" *ngFor="let optionEnd of filteredOptionsEnd | async" [value]="optionEnd">
-          {{optionEnd.zipcode }} , {{optionEnd.place}} , {{optionEnd.state}}
-        </mat-option>
+    <div class="row">
 
-      </mat-autocomplete>
-    </mat-form-field>
+      <div class="col">
+        <mat-form-field id="form-field-2" class="example-full-width" appearance="fill">
+          <mat-label>End Point</mat-label>
+          <input type="text"
 
+                 placeholder="Zip codes"
+                 aria-label="Address"
+                 matInput
+                 [formControl]="myControlEnd"
+                 [matAutocomplete]="autoEnd">
+          <mat-autocomplete id="mat-autocomplete-2" #autoEnd="matAutocomplete" [displayWith]="displayFn"  (optionSelected)='selectOptionEnd($event)'>
+            <mat-option id="mat-option-2" *ngFor="let optionEnd of filteredOptionsEnd | async" [value]="optionEnd">
+              {{optionEnd.zipcode }} , {{optionEnd.place}} , {{optionEnd.state}}
+            </mat-option>
+
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Street Nr.</mat-label>
+            <input matInput placeholder="Ex. Eupener Stieg 95" [(ngModel)] = "toStreet" name="toStreet">
+          </mat-form-field>
+
+
+      </div>
+    </div>
+
+    <button type="submit">Submit</button>
   </form>
+
+  <div>distanceInKm {{distanceInKm}}</div>
 
 
 </div>
