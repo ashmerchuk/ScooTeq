@@ -29,6 +29,8 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { DevicesConsumeCalculatorComponent } from './devices-consume-calculator/devices-consume-calculator.component';
 import {MatCardModule} from '@angular/material/card';
+import { DeviceItemComponent } from './devices-consume-calculator/device-item/device-item.component';
+import { DeviceItemFormularComponent } from './devices-consume-calculator/device-item-formular/device-item-formular.component';
 
 
 
@@ -39,7 +41,9 @@ import {MatCardModule} from '@angular/material/card';
     DialogPriceComponent,
     TripComponent,
     ProductsComponent,
-    DevicesConsumeCalculatorComponent
+    DevicesConsumeCalculatorComponent,
+    DeviceItemComponent,
+    DeviceItemFormularComponent
   ],
   imports: [
     BrowserModule,
