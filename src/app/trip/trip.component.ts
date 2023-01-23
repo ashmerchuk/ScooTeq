@@ -143,7 +143,7 @@ onSubmit(){
     const firstCoordinate = {latitude: this.fromAddress.latitude , longitude:this.fromAddress.longitude};
     const secondCoordinate = {latitude: this.toAddress.latitude, longitude:this.toAddress.longitude};
 
-    this.distanceInKm = geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 2;
+    this.distanceInKm = Math.round((geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 2) * 100) / 100 ;
   console.log(this.distanceInKm );
 
   }
@@ -153,6 +153,11 @@ onSubmit(){
 
   console.log("fromStreet ", this.fromStreet)
   console.log("toStreet ", this.toStreet)
+}
+
+calculateTimeToDoneTrip(distance : number){
+
+  return Math.round(distance / 10 * 60 * 100) / 100
 }
 
 

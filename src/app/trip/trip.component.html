@@ -1,5 +1,3 @@
-<p>trip works!</p>
-
 
 
 <!-- <ng-select [items]="simpleItems"
@@ -85,6 +83,8 @@
   </form>
 
   <div>distanceInKm {{distanceInKm}}</div>
+
+  <div *ngIf="distanceInKm != undefined">If you drive at 10km/h, it will take you {{calculateTimeToDoneTrip(distanceInKm)}}  minutes to complete the Trip </div>
 
 
 </div>
