@@ -7,7 +7,7 @@ import {map, startWith} from 'rxjs/operators';
 
 import {FormControl, FormGroup} from '@angular/forms';
 
-// import zipcodes from '/src/data/zipcodes'
+import {ZIPCODES} from '../data/zipcodes'
 
 interface Address {
   country_code: string;
@@ -78,27 +78,30 @@ export class TripComponent implements OnInit  {
 
 
 myControl = new FormControl();
-options = [{
-    displayOrderId: 1,
-    code: "1111",
-    description: "1111 Description"
-  },
-  {
-    displayOrderId: 2,
-    code: "2222",
-    description: "2222 Description"
-  },
-  {
-    displayOrderId: 3,
-    code: "3333",
-    description: "3333 Description"
-  },
-  {
-    displayOrderId: 4,
-    code: "4444",
-    description: "4444 Description"
-  }
-];
+
+
+options = ZIPCODES
+// options = [{
+//     displayOrderId: 1,
+//     code: "1111",
+//     description: "1111 Description"
+//   },
+//   {
+//     displayOrderId: 2,
+//     code: "2222",
+//     description: "2222 Description"
+//   },
+//   {
+//     displayOrderId: 3,
+//     code: "3333",
+//     description: "3333 Description"
+//   },
+//   {
+//     displayOrderId: 4,
+//     code: "4444",
+//     description: "4444 Description"
+//   }
+// ];
 filteredOptions: Observable<any> | undefined ;
 
 ngOnInit() {
@@ -113,16 +116,16 @@ private _filter(value: any) {
   if (typeof value === "string") {
     filterValue = value.toLowerCase();
   } else {
-    filterValue = value.description.toLowerCase();
+    filterValue = value.zipcode.toLowerCase();
   }
 
   return this.options.filter(
-    option => option.description.toLowerCase().indexOf(filterValue) === 0
+    option => option.zipcode.toLowerCase().indexOf(filterValue) === 0
   );
 }
 
 displayFn(value: any) {
-  return value ? value.description : undefined;
+  return value ? value.zipcode : undefined;
 }
 
 
