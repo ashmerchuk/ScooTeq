@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
-import { HttpClient } from '@angular/common/http'
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

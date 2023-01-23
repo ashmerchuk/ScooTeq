@@ -14,7 +14,6 @@ import {DialogPriceComponent} from './dialog-price/dialog-price.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TripComponent } from './trip/trip.component';
 import { ProductsComponent } from './products/products.component'
-import { CalculatorModule } from './calculator/calculator.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +27,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { DevicesConsumeCalculatorComponent } from './devices-consume-calculator/devices-consume-calculator.component';
 
 
 
@@ -38,6 +38,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     DialogPriceComponent,
     TripComponent,
     ProductsComponent,
+    DevicesConsumeCalculatorComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +57,6 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     NgxMatSelectSearchModule,
     MatAutocompleteModule,
     MatInputModule,
-    CalculatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
