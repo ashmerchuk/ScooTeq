@@ -1,3 +1,15 @@
+<div style="text-align:center;margin-bottom:15px">
+  <div>From Point: {{fromPoint}}</div>
+  <div>To Point: {{toPoint}}</div>
+  <div>Distance : {{distanceInKm}}</div>
+
+  <div *ngIf="distanceInKm != undefined">If you drive at 10km/h, it will take you {{calculateTimeToDoneTrip(distanceInKm)}}  minutes to complete the Trip </div>
+</div>
+
+
+
+
+
 <div  *ngIf="!isStop" class="for-button">
     <button class="btn btn-info" *ngIf="!isStart" (click)="changeStatusStart()">
         Start Price

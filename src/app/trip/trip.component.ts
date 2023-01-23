@@ -11,6 +11,9 @@ import {ZIPCODES} from '../data/zipcodes'
 
 import * as geolib from 'geolib';
 
+import { DataService } from '../data.service';
+
+
 
 interface Address {
   country_code: string;
@@ -28,15 +31,11 @@ interface Address {
 
 }
 
-interface Country {
-  name : string;
-  code: string;
-}
+import { Injectable } from '@angular/core';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
+@Injectable({
+  providedIn: 'root'
+})
 
 
 @Component({
@@ -45,6 +44,8 @@ interface Food {
   styleUrls: ['./trip.component.scss']
 })
 export class TripComponent implements OnInit  {
+  constructor(private dataService: DataService) { }
+
   fromStreet : string | undefined;
   toStreet : string | undefined;
 
@@ -63,13 +64,10 @@ optionsEnd = JSON.parse(JSON.stringify(ZIPCODES))
 filteredOptions: Observable<any> | undefined ;
 filteredOptionsEnd: Observable<any> | undefined ;
 
+
 ngOnInit() {
 
-  // const firstCoordinate = {latitude: 53.5439, longitude:10.0133};
-  // const secondCoordinate = {latitude: 53.5825, longitude:10.0625};
 
-  // const distanceInKm = geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 1;
-  // console.log(distanceInKm );
 
   this.filteredOptions = this.myControl.valueChanges.pipe(
     startWith(""),
@@ -143,21 +141,28 @@ onSubmit(){
     const firstCoordinate = {latitude: this.fromAddress.latitude , longitude:this.fromAddress.longitude};
     const secondCoordinate = {latitude: this.toAddress.latitude, longitude:this.toAddress.longitude};
 
-    this.distanceInKm = Math.round((geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 2) * 100) / 100 ;
+    this.distanceInKm = Math.round((geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 1.5) * 100) / 100 ;
+
+
   console.log(this.distanceInKm );
+
+  this.dataService.setData('fromPoint', this.fromStreet + ', '+this.fromAddress.zipcode + ', '+this.fromAddress.place)
+  this.dataService.setData('toPoint', this.toStreet + ', '+this.toAddress.zipcode + ', '+this.toAddress.place)
+  this.dataService.setData('distanceInKm', this.distanceInKm)
 
   }
 
-  console.log("fromAddress ", this.fromAddress)
-  console.log("toAddress ", this.toAddress)
 
-  console.log("fromStreet ", this.fromStreet)
-  console.log("toStreet ", this.toStreet)
+  // console.log("fromAddress ", this.fromAddress)
+  // console.log("toAddress ", this.toAddress)
+
+  // console.log("fromStreet ", this.fromStreet)
+  // console.log("toStreet ", this.toStreet)
 }
 
 calculateTimeToDoneTrip(distance : number){
 
-  return Math.round(distance / 10 * 60 * 100) / 100
+  return Math.round(distance / 10 * 60 )
 }
 
 

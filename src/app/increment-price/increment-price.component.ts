@@ -2,6 +2,8 @@ import { Component , OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import {DialogPriceComponent} from "../dialog-price/dialog-price.component";
 
+import { DataService } from '../data.service';
+
 
 @Component({
   selector: 'app-increment-price',
@@ -9,15 +11,29 @@ import {DialogPriceComponent} from "../dialog-price/dialog-price.component";
   styleUrls: ['./increment-price.component.scss']
 })
 export class IncrementPriceComponent implements OnInit{
-  constructor(private dialogRef : MatDialog){}
+
+
+
+  constructor(private dialogRef : MatDialog,private dataService: DataService){}
   isStart = false
   isStop = false
   timeoutId: any;
   isPause = false
   price = 0
 
-  ngOnInit(){
+  fromPoint : string | undefined
+  toPoint : string | undefined
+
+  distanceInKm : number | undefined
+
+  ngOnInit(): void{
     // this.incrementPrice()
+
+    this.fromPoint = this.dataService.getData('fromPoint')
+    this.toPoint = this.dataService.getData('toPoint')
+    this.distanceInKm = this.dataService.getData('distanceInKm')
+
+
   }
   changeStatusStart(){
     if(!this.isStart){
@@ -57,5 +73,10 @@ export class IncrementPriceComponent implements OnInit{
       this.isPause = false
       this.incrementPrice()
     }
+  }
+
+  calculateTimeToDoneTrip(distance : number){
+
+    return Math.round(distance / 10 * 60 )
   }
 }
