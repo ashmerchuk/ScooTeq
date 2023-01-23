@@ -78,9 +78,12 @@ export class TripComponent implements OnInit  {
 
 
 myControl = new FormControl();
+myControlEnd = new FormControl();
+// var tempArray = JSON.parse(JSON.stringify(mainArray));
 
-
-options = ZIPCODES
+options = JSON.parse(JSON.stringify(ZIPCODES)) 
+optionsEnd = JSON.parse(JSON.stringify(ZIPCODES)) 
+// optionsEnd = ZIPCODES
 // options = [{
 //     displayOrderId: 1,
 //     code: "1111",
@@ -103,11 +106,17 @@ options = ZIPCODES
 //   }
 // ];
 filteredOptions: Observable<any> | undefined ;
+filteredOptionsEnd: Observable<any> | undefined ;
 
 ngOnInit() {
   this.filteredOptions = this.myControl.valueChanges.pipe(
     startWith(""),
     map(value => this._filter(value))
+  );
+
+  this.filteredOptionsEnd = this.myControlEnd.valueChanges.pipe(
+    startWith(""),
+    map(value => this._filterEnd(value))
   );
 }
 
@@ -120,7 +129,21 @@ private _filter(value: any) {
   }
 
   return this.options.filter(
-    option => option.zipcode.toLowerCase().indexOf(filterValue) === 0
+    (    option: { zipcode: string; }) => option.zipcode.toLowerCase().indexOf(filterValue) === 0
+  );
+}
+
+
+private _filterEnd(value: any) {
+  let filterValueEnd = '';
+  if (typeof value === "string") {
+    filterValueEnd = value.toLowerCase();
+  } else {
+    filterValueEnd = value.zipcode.toLowerCase();
+  }
+
+  return this.optionsEnd.filter(
+    (    option: { zipcode: string; }) => option.zipcode.toLowerCase().indexOf(filterValueEnd) === 0
   );
 }
 
@@ -134,6 +157,10 @@ selectOption(e: MatAutocompleteSelectedEvent) {
   console.log(item);
 }
 
+selectOptionEnd(e: MatAutocompleteSelectedEvent) {
+  const item = e.option.value;
+  console.log("end ",item);
+}
 
 
 }

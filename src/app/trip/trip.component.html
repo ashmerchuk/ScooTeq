@@ -12,7 +12,7 @@
 
   <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Number</mat-label>
+      <mat-label>Start Point</mat-label>
       <input type="text"
 
              placeholder="Pick one"
@@ -21,8 +21,32 @@
              [formControl]="myControl"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete"  (optionSelected)='selectOption($event)'>
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.zipcode">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option.zipcode }} , {{option.place}} , {{option.state}}
+        </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+</div>
+
+
+<div style="margin-left:50px">
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>End Point</mat-label>
+      <input type="text"
+
+             placeholder="Pick one"
+             aria-label="Address"
+             matInput
+             [formControl]="myControlEnd"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete"  (optionSelected)='selectOptionEnd($event)'>
+        <mat-option *ngFor="let optionEnd of filteredOptionsEnd | async" [value]="optionEnd">
+          {{optionEnd.zipcode }} , {{optionEnd.place}} , {{optionEnd.state}}
         </mat-option>
 
       </mat-autocomplete>
