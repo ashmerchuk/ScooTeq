@@ -14,7 +14,7 @@ import * as geolib from 'geolib';
 import { DataService } from '../data.service';
 
 import { Router } from '@angular/router';
-
+import { MatIconModule } from '@angular/material/icon';
 
 
 interface Address {
