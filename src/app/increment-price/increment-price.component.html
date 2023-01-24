@@ -1,39 +1,48 @@
-<div style="text-align:center;margin-bottom:15px">
-  <div>From Point: {{fromPoint}}</div>
-  <div>To Point: {{toPoint}}</div>
-  <div>Distance : {{distanceInKm}}</div>
+<div>Battery {{ batteryPercent }} %</div>
+<div>Battery Full:  1k2W</div> 
+<div *ngIf="batteryPercent">current Battery {{currentBattery(batteryPercent)}} W</div>
+<div *ngIf="batteryPercent">Electricity consumed {{electricityConsumed(batteryPercent)}} W</div>
 
-  <div *ngIf="distanceInKm != undefined">If you drive at 10km/h, it will take you {{calculateTimeToDoneTrip(distanceInKm)}}  minutes to complete the Trip </div>
+
+<div *ngIf="batteryPercent">Cost of electricity consumption of {{costOfConsumedElectricity(batteryPercent)}} euros.</div>
+
+
+<div style="text-align: center; margin-bottom: 15px">
+  <div>From Point: {{ fromPoint }}</div>
+  <div>To Point: {{ toPoint }}</div>
+  <div>Distance : {{ distanceInKm }}</div>
+
+  <div *ngIf="distanceInKm != undefined">
+    If you drive at 10km/h, it will take you
+    {{ calculateTimeToDoneTrip(distanceInKm) }} minutes to complete the Trip
+  </div>
 </div>
 
-
-
-<div  *ngIf="!isStop" class="for-button">
-    <button class="btn btn-info" *ngIf="!isStart" (click)="changeStatusStart()">
-        Start Price
-      </button>
-      <button  class="btn btn-danger"  *ngIf="isStart" (click)="changeStatusStart()">
-       Stop
-      </button>
-      <button *ngIf="!isPause && !isStop"  class="btn btn-warning"   (click)="pausePrice()">
-        Pause
-      </button>
-      <button class="btn btn-secondary"  *ngIf="isPause"  (click)="pausePrice()">
-        Continue
-      </button>
- </div>
- <h2 *ngIf="!isStop" class="price" class="for-button">
-    Your Price for trip is:  {{price.toFixed(2)}}  €
-  </h2>
+<div *ngIf="!isStop" class="for-button">
+  <button class="btn btn-info" *ngIf="!isStart" (click)="changeStatusStart()">
+    Start Price
+  </button>
+  <button class="btn btn-danger" *ngIf="isStart" (click)="changeStatusStart()">
+    Stop
+  </button>
+  <button
+    *ngIf="!isPause && !isStop"
+    class="btn btn-warning"
+    (click)="pausePrice()"
+  >
+    Pause
+  </button>
+  <button class="btn btn-secondary" *ngIf="isPause" (click)="pausePrice()">
+    Continue
+  </button>
+</div>
+<h2 *ngIf="!isStop" class="price" class="for-button">
+  Your Price for trip is: {{ price.toFixed(2) }} €
+</h2>
 <div class="animation">
-  <img class="animation-scooter" src="assets/img/sc_notext.png">
+  <img class="animation-scooter" src="assets/img/sc_notext.png" />
 </div>
 
 <!--  <h2 *ngIf="isStop" class="price" class="for-button">-->
 <!--    Trip done with:  {{price.toFixed(2)}}  €-->
 <!--  </h2>-->
-
-
-
-
-

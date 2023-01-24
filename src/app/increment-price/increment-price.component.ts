@@ -18,27 +18,46 @@ export class IncrementPriceComponent implements OnInit{
   isStart = false
   isStop = false
   timeoutId: any;
+  timeoutIdBattery: any;
   isPause = false
   price = 0
+  batteryFull = 1200
 
   fromPoint : string | undefined
   toPoint : string | undefined
 
   distanceInKm : number | undefined
+  batteryPercent : number | undefined
 
   ngOnInit(): void{
     // this.incrementPrice()
+    this.batteryPercent = 100
+
+   
 this.isStart = true
     this.fromPoint = this.dataService.getData('fromPoint')
     this.toPoint = this.dataService.getData('toPoint')
     this.distanceInKm = this.dataService.getData('distanceInKm')
 
-this.incrementPrice()
+  this.incrementPrice()
+  this.batteryConsume()
+  }
+
+  batteryConsume(){
+    if(this.batteryPercent)
+    this.batteryPercent -= 1
+
+    this.timeoutIdBattery = setTimeout(() => {
+      this.batteryConsume()
+    },3000)
+
+    return this.timeoutIdBattery
   }
   changeStatusStart(){
     if(!this.isStart){
       this.isStart = true
       this.incrementPrice()
+      this.batteryConsume()
 
     }else{
       this.isStart = false
@@ -49,6 +68,7 @@ this.incrementPrice()
 
       this.price.toFixed(2)
       clearTimeout(this.timeoutId)
+      clearTimeout(this.timeoutIdBattery)
       this.dialogRef.open(DialogPriceComponent, {
         data:{
           price: this.price
@@ -61,7 +81,7 @@ this.incrementPrice()
     this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
-    }, 300);
+    }, 1000);
   return this.timeoutId
   }
   pausePrice(){
@@ -69,9 +89,11 @@ this.incrementPrice()
       this.isPause = true
       console.log(" this.pausePriceVar T ",this.price)
       clearTimeout(this.timeoutId)
+      clearTimeout(this.timeoutIdBattery)
     }else{
       this.isPause = false
       this.incrementPrice()
+      this.batteryConsume()
     }
   }
 
@@ -79,4 +101,14 @@ this.incrementPrice()
 
     return Math.round(distance / 10 * 60 )
   }
+
+  currentBattery(percent : number){
+      return this.batteryFull * percent / 100
+  }
+  // Electricity consumed
+  electricityConsumed(percent : number ){
+    return this.batteryFull - (this.batteryFull * percent / 100)
+  }
+  costOfConsumedElectricity(percent : number ){
+   return Math.round((this.electricityConsumed(percent ) * 0.0004 ) * 10000) / 10000 }
 }

@@ -154,6 +154,7 @@ onSubmit(){
   this.dataService.setData('fromPoint', this.fromStreet + ', '+this.fromAddress.zipcode + ', '+this.fromAddress.place)
   this.dataService.setData('toPoint', this.toStreet + ', '+this.toAddress.zipcode + ', '+this.toAddress.place)
   this.dataService.setData('distanceInKm', this.distanceInKm)
+  // this.dataService.setData('price', )
 
   this.router.navigate(['/testing_drive']);
 
