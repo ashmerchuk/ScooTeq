@@ -28,12 +28,12 @@ export class IncrementPriceComponent implements OnInit{
 
   ngOnInit(): void{
     // this.incrementPrice()
-
+this.isStart = true
     this.fromPoint = this.dataService.getData('fromPoint')
     this.toPoint = this.dataService.getData('toPoint')
     this.distanceInKm = this.dataService.getData('distanceInKm')
 
-
+this.incrementPrice()
   }
   changeStatusStart(){
     if(!this.isStart){

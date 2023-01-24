@@ -13,6 +13,8 @@ import * as geolib from 'geolib';
 
 import { DataService } from '../data.service';
 
+import { Router } from '@angular/router';
+
 
 
 interface Address {
@@ -44,7 +46,8 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./trip.component.scss']
 })
 export class TripComponent implements OnInit  {
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,private router: Router) { }
+
 
   fromStreet : string | undefined;
   toStreet : string | undefined;
@@ -144,11 +147,15 @@ onSubmit(){
     this.distanceInKm = Math.round((geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 1.5) * 100) / 100 ;
 
 
+
+
   console.log(this.distanceInKm );
 
   this.dataService.setData('fromPoint', this.fromStreet + ', '+this.fromAddress.zipcode + ', '+this.fromAddress.place)
   this.dataService.setData('toPoint', this.toStreet + ', '+this.toAddress.zipcode + ', '+this.toAddress.place)
   this.dataService.setData('distanceInKm', this.distanceInKm)
+
+  this.router.navigate(['/testing_drive']);
 
   }
 
