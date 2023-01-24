@@ -8,8 +8,6 @@
 
 
 
-
-
 <div  *ngIf="!isStop" class="for-button">
     <button class="btn btn-info" *ngIf="!isStart" (click)="changeStatusStart()">
         Start Price
@@ -24,10 +22,12 @@
         Continue
       </button>
  </div>
-
  <h2 *ngIf="!isStop" class="price" class="for-button">
     Your Price for trip is:  {{price.toFixed(2)}}  €
   </h2>
+<div class="animation">
+  <img class="animation-scooter" src="assets/img/sc_notext.png">
+</div>
 
 <!--  <h2 *ngIf="isStop" class="price" class="for-button">-->
 <!--    Trip done with:  {{price.toFixed(2)}}  €-->

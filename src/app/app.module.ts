@@ -12,7 +12,6 @@ import { IncrementPriceComponent } from './increment-price/increment-price.compo
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogPriceComponent} from './dialog-price/dialog-price.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ClaculateElectricityComponent } from './claculate-electricity/claculate-electricity.component';
 import { TripComponent } from './trip/trip.component';
 import { ProductsComponent } from './products/products.component'
 
@@ -30,8 +29,15 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { RouterModule, Routes } from "@angular/router";
+import { CalculateElectricityComponent } from './calculate-electricity/calculate-electricity.component';
 
-
+const myRoutes: Routes = [
+  { path: '', component: TripComponent },
+  { path: 'calculate_electricity', component: CalculateElectricityComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'testing_drive', component: IncrementPriceComponent }
+]
 
 
 
@@ -40,28 +46,30 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     AppComponent,
     IncrementPriceComponent,
     DialogPriceComponent,
-    ClaculateElectricityComponent,
     TripComponent,
     ProductsComponent,
+    CalculateElectricityComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    NgbModule,
-    FormsModule,
-    MatDialogModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    NgSelectModule,
-    NgxMatSelectSearchModule,
-    MatAutocompleteModule,
-    MatInputModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        NgbModule,
+        FormsModule,
+        MatDialogModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        NgSelectModule,
+        NgxMatSelectSearchModule,
+        MatAutocompleteModule,
+        MatInputModule,
+        RouterModule,
+        RouterModule.forRoot(myRoutes)
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
