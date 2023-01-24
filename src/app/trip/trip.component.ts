@@ -156,7 +156,7 @@ onSubmit(){
   this.dataService.setData('distanceInKm', this.distanceInKm)
   // this.dataService.setData('price', )
 
-  this.router.navigate(['/testing_drive']);
+  this.router.navigate(['/products']);
 
   }
 

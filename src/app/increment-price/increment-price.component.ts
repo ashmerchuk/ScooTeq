@@ -28,12 +28,16 @@ export class IncrementPriceComponent implements OnInit{
 
   distanceInKm : number | undefined
   batteryPercent : number | undefined
+  priceProMinute : number | undefined
+
+
 
   ngOnInit(): void{
     // this.incrementPrice()
     this.batteryPercent = 100
+    this.priceProMinute = this.dataService.getData('priceProMinute')
 
-   
+
 this.isStart = true
     this.fromPoint = this.dataService.getData('fromPoint')
     this.toPoint = this.dataService.getData('toPoint')
@@ -49,7 +53,7 @@ this.isStart = true
 
     this.timeoutIdBattery = setTimeout(() => {
       this.batteryConsume()
-    },3000)
+    },150000)
 
     return this.timeoutIdBattery
   }
@@ -62,7 +66,7 @@ this.isStart = true
     }else{
       this.isStart = false
       this.isStop = true
-      this.price = Math.round(this.price * 100) / 100
+      this.price = Math.round(this.price * 1000) / 1000
 
      console.log(" this.price  stop", this.price)
 
@@ -77,7 +81,8 @@ this.isStart = true
     }
   }
   incrementPrice(){
-    this.price += 0.05;
+    if(this.priceProMinute)
+    this.price += (this.priceProMinute / 60);
     this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
