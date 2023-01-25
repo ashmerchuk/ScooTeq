@@ -1,0 +1,16 @@
+<mat-card class="device-item-container">
+  <mat-list>
+    <mat-list-item>
+      <span matListItemTitle class="item-name">{{device.name | uppercase }}</span>
+      <span matListItemLine>{{device.amount}} Stück</span>
+      <span matListItemLine>{{device.consume}} Watt</span>
+    </mat-list-item>
+  </mat-list>
+  <div class="resume-area">
+    <h2>{{totalItemConsume}}W</h2>
+    <div class="options-area">
+      <mat-icon (click)="onEdit()">tune</mat-icon> 
+      <mat-icon (click)="onDelete()">close</mat-icon> 
+    </div>
+  </div>
+</mat-card>

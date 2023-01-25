@@ -1,0 +1,28 @@
+<mat-card class="device-item-card">
+  <mat-card-title>
+    <h3 *ngIf="mode === 'add'">Neue Gerät hinzufügen</h3>
+    <h3 *ngIf="mode === 'edit'">Gerät bearbeiten</h3>
+  </mat-card-title>
+
+  <form [formGroup]="deviceItemForm" class="device-form-container">
+    <mat-form-field  appearance="outline">
+      <mat-label>Gerätname</mat-label>
+      <input matInput formControlName="name" type="string">
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+      <mat-label>Anzahl</mat-label>
+      <input matInput min="1" formControlName="amount" type="number">
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+      <mat-label>Strömverbraucht (W)</mat-label>
+      <input matInput min="1" formControlName="consume" type="number">
+    </mat-form-field>
+  </form>
+
+  <mat-card-actions align="end">
+    <button mat-button color="warn" (click)="onNoClick()">Abrechen</button>
+    <button mat-flat-button color="primary" [mat-dialog-close]="data" [disabled]="deviceItemForm.invalid">Hinzufügen</button>
+  </mat-card-actions>
+</mat-card>
