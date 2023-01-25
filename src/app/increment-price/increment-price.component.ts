@@ -41,6 +41,13 @@ export class IncrementPriceComponent implements OnInit{
   ngOnInit(): void{
     // this.incrementPrice()
     this.batteryPercent = 100
+
+    axios.get("http://localhost:8690/getBattery").then(response => {
+      
+    this.batteryPercent = response.data.batteryStatus
+    console.log("this.batteryPercent ",this.batteryPercent)
+
+    })
     this.priceProMinute = this.dataService.getData('priceProMinute')
 
 this.isStart = true
@@ -82,7 +89,11 @@ this.isStart = true
      if(this.curBattery){
 
       batteryObject.batteryStatus = this.curBattery
+
+
   }
+
+  
   axios.post("http://localhost:8690/saveBattery" ,batteryObject).then(re => {
     console.log("save Battery", batteryObject)
   }).catch(er => {
