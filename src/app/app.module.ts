@@ -31,6 +31,9 @@ import { DevicesConsumeCalculatorComponent } from './devices-consume-calculator/
 import {MatCardModule} from '@angular/material/card';
 import { DeviceItemComponent } from './devices-consume-calculator/device-item/device-item.component';
 import { DeviceItemFormularComponent } from './devices-consume-calculator/device-item-formular/device-item-formular.component';
+import { CalculatorResultComponent } from './devices-consume-calculator/calculator-result/calculator-result.component';
+import {MatListModule} from '@angular/material/list';
+
 
 
 
@@ -43,7 +46,8 @@ import { DeviceItemFormularComponent } from './devices-consume-calculator/device
     ProductsComponent,
     DevicesConsumeCalculatorComponent,
     DeviceItemComponent,
-    DeviceItemFormularComponent
+    DeviceItemFormularComponent,
+    CalculatorResultComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,8 @@ import { DeviceItemFormularComponent } from './devices-consume-calculator/device
     NgxMatSelectSearchModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

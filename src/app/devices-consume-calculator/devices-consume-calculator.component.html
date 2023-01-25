@@ -1,13 +1,12 @@
 <div class="calculator-main-container">
   <div class="user-inputs-container">
     <form [formGroup]="conditionsForm" class="conditions-form-container">
-
-      <mat-form-field appearance="outline">
-        <mat-label>Netzspannung</mat-label>
-        <mat-select formControlName="voltageOutput">
-          <mat-option *ngFor="let voltage of voltageList" [value]="voltage">{{voltage}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <!-- <mat-form-field appearance="outline"> -->
+      <!--   <mat-label>Netzspannung</mat-label> -->
+      <!--   <mat-select formControlName="voltageOutput"> -->
+      <!--     <mat-option *ngFor="let voltage of voltageList" [value]="voltage">{{voltage}}</mat-option> -->
+      <!--   </mat-select> -->
+      <!-- </mat-form-field> -->
 
       <mat-form-field  appearance="outline">
         <mat-label>Kosten je KWh (¢)</mat-label>
@@ -23,18 +22,21 @@
         <mat-label>Zeitraum (wochen)</mat-label>
         <input matInput min="1" formControlName="evaluatedPeriod" type="number">
       </mat-form-field>
-
     </form>
     
     <div class="devices-list-container">
       <button class="add-button" mat-flat-button color="primary" (click)="addDeviceItem()">+</button> 
-      <app-device-item *ngFor="let device of deviceList" [device]="device"></app-device-item>
+      <app-device-item 
+        *ngFor="let device of deviceList" 
+        [device]="device"
+        (deleteDevice)="removeDeviceItem($event)"
+        (editDevice)="editDeviceItem($event)"
+      >
+      </app-device-item>
     </div>
 
   </div>
 
+  <app-calculator-result [deviceList]="deviceList" [calculatorConditions]="conditionsForm.value"></app-calculator-result>
 
-  <mat-card class="calculator-results-container">
-    resultado
-  </mat-card>
 </div>

@@ -7,3 +7,9 @@ export interface DeviceItem {
   consume: number;
   deactivate?: boolean;
 };
+
+export interface CalculatorConditions {
+  kwhCost: number,
+  weeklyWorkHours: number,
+  evaluatedPeriod: number,
+}

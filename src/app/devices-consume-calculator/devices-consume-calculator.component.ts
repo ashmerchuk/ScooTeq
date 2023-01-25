@@ -21,17 +21,17 @@ export class DevicesConsumeCalculatorComponent implements OnInit {
 
   ngOnInit() {
     this.conditionsForm = this._formBuilder.group({
-      voltageOutput: [null, [Validators.required]],
       kwhCost: [null, [Validators.required]],
       weeklyWorkHours: [null, [Validators.required]],
       evaluatedPeriod: [null, [Validators.required]],
+      // voltageOutput: [null, [Validators.required]],
     })
   }
 
   public addDeviceItem(): void {
     let dialogRef = this._dialog.open(DeviceItemFormularComponent, { data: null });
     dialogRef.afterClosed().subscribe((item) =>{
-      if(item) this.deviceList.push(item);
+      if(item) this.deviceList = [...this.deviceList, ...[item]];
     })
   }
 
@@ -39,7 +39,8 @@ export class DevicesConsumeCalculatorComponent implements OnInit {
     let dialogRef = this._dialog.open(DeviceItemFormularComponent, { data: item })
     dialogRef.afterClosed().subscribe((item) =>{
       if(item) {
-        // let index = 
+        this.removeDeviceItem(item);
+        this.deviceList = [...this.deviceList, ...[item]];
       }
     })
   }
