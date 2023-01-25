@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { TripComponent } from './trip/trip.component'
 import { ProductsComponent } from './products/products.component'
 
+import { AdminComponent } from './admin/admin.component'
+
 import { ReactiveFormsModule } from '@angular/forms'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
@@ -33,13 +35,14 @@ import { DeviceItemFormularComponent } from './devices-consume-calculator/device
 import { CalculatorResultComponent } from './devices-consume-calculator/calculator-result/calculator-result.component'
 import { MatListModule } from '@angular/material/list'
 
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
 
 const myRoutes: Routes = [
   { path: '', component: TripComponent },
   { path: 'calculate_electricity', component: DevicesConsumeCalculatorComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'testing_drive', component: IncrementPriceComponent },
+  { path: 'admin', component: AdminComponent },
 ]
 
 @NgModule({
@@ -53,6 +56,7 @@ const myRoutes: Routes = [
     DeviceItemFormularComponent,
     CalculatorResultComponent,
     DevicesConsumeCalculatorComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
