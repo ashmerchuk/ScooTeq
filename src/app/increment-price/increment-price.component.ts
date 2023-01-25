@@ -76,7 +76,7 @@ this.isStart = true
      console.log(" this.price  stop", this.price)
 
      let batteryObject = {
-
+        id: 0,
       batteryStatus: 0
      }
      if(this.curBattery){
@@ -84,8 +84,11 @@ this.isStart = true
       batteryObject.batteryStatus = this.curBattery
   }
   axios.post("http://localhost:8690/saveBattery" ,batteryObject).then(re => {
-    console.log("save Battery")
-  })
+    console.log("save Battery", batteryObject)
+  }).catch(er => {
+    console.log("er")
+  });
+
 
       this.price.toFixed(2)
       clearTimeout(this.timeoutId)
