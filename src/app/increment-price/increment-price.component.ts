@@ -1,9 +1,13 @@
 import { Component , OnInit} from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import {DialogPriceComponent} from "../dialog-price/dialog-price.component";
+import axios from 'axios';
 
 import { DataService } from '../data.service';
-
+interface Battery {
+  id: number
+  batteryStatus: number
+}
 
 @Component({
   selector: 'app-increment-price',
@@ -12,7 +16,7 @@ import { DataService } from '../data.service';
 })
 export class IncrementPriceComponent implements OnInit{
 
-
+ 
 
   constructor(private dialogRef : MatDialog,private dataService: DataService){}
   isStart = false
@@ -29,6 +33,8 @@ export class IncrementPriceComponent implements OnInit{
   distanceInKm : number | undefined
   batteryPercent : number | undefined
   priceProMinute : number | undefined
+  curBattery : number | undefined
+
 
 
 
@@ -36,7 +42,6 @@ export class IncrementPriceComponent implements OnInit{
     // this.incrementPrice()
     this.batteryPercent = 100
     this.priceProMinute = this.dataService.getData('priceProMinute')
-
 
 this.isStart = true
     this.fromPoint = this.dataService.getData('fromPoint')
@@ -69,6 +74,18 @@ this.isStart = true
       this.price = Math.round(this.price * 1000) / 1000
 
      console.log(" this.price  stop", this.price)
+
+     let batteryObject = {
+
+      batteryStatus: 0
+     }
+     if(this.curBattery){
+
+      batteryObject.batteryStatus = this.curBattery
+  }
+  axios.post("http://localhost:8690/saveBattery" ,batteryObject).then(re => {
+    console.log("save Battery")
+  })
 
       this.price.toFixed(2)
       clearTimeout(this.timeoutId)
@@ -108,6 +125,8 @@ this.isStart = true
   }
 
   currentBattery(percent : number){
+
+    this.curBattery = this.batteryFull * percent / 100
       return this.batteryFull * percent / 100
   }
   // Electricity consumed
