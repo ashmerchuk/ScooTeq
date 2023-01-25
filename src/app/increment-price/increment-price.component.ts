@@ -53,7 +53,7 @@ this.isStart = true
 
     this.timeoutIdBattery = setTimeout(() => {
       this.batteryConsume()
-    },150000)
+    },15000)
 
     return this.timeoutIdBattery
   }
