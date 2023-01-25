@@ -7,7 +7,15 @@ import {map, startWith} from 'rxjs/operators';
 
 import {FormControl, FormGroup} from '@angular/forms';
 
-// import zipcodes from '/src/data/zipcodes'
+import {ZIPCODES} from '../data/zipcodes'
+
+import * as geolib from 'geolib';
+
+import { DataService } from '../data.service';
+
+import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+
 
 interface Address {
   country_code: string;
@@ -25,15 +33,11 @@ interface Address {
 
 }
 
-interface Country {
-  name : string;
-  code: string;
-}
+import { Injectable } from '@angular/core';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
+@Injectable({
+  providedIn: 'root'
+})
 
 
 @Component({
@@ -42,69 +46,40 @@ interface Food {
   styleUrls: ['./trip.component.scss']
 })
 export class TripComponent implements OnInit  {
+  constructor(private dataService: DataService,private router: Router) { }
 
 
+  fromStreet : string | undefined;
+  toStreet : string | undefined;
 
-  // myControl = new FormControl('');
+  fromAddress : Address | undefined
+  toAddress : Address | undefined
 
-
-
-// addresses : Address[] = zipcodes
-
-// // options: this.addresses;
-
-
-// //   // options: string[] = ['One', 'Two', 'Three'];
-//   filteredOptions: Observable<string[]> | undefined;
-
-//   ngOnInit() {
-//     this.filteredOptions = this.myControl.valueChanges.pipe(
-//       startWith(''),
-//       map(value => this._filter(value || '')),
-//     );
-//   }
-
-//   private _filter(value: string): string[] {
-//     const filterValue = value.toLowerCase();
-
-//     // option.zipcode => option.zipcode.toLowerCase().includes(filterValue)
-//     return this.addresses.filter(ad => {
-//     ad.zipcode.toLowerCase().includes(filterValue)
-//     });
-//   },
-
-
-
-
+  distanceInKm : number | undefined
 
 myControl = new FormControl();
-options = [{
-    displayOrderId: 1,
-    code: "1111",
-    description: "1111 Description"
-  },
-  {
-    displayOrderId: 2,
-    code: "2222",
-    description: "2222 Description"
-  },
-  {
-    displayOrderId: 3,
-    code: "3333",
-    description: "3333 Description"
-  },
-  {
-    displayOrderId: 4,
-    code: "4444",
-    description: "4444 Description"
-  }
-];
+myControlEnd = new FormControl();
+// var tempArray = JSON.parse(JSON.stringify(mainArray));
+
+options = JSON.parse(JSON.stringify(ZIPCODES))
+optionsEnd = JSON.parse(JSON.stringify(ZIPCODES))
+
 filteredOptions: Observable<any> | undefined ;
+filteredOptionsEnd: Observable<any> | undefined ;
+
 
 ngOnInit() {
+
+
+
   this.filteredOptions = this.myControl.valueChanges.pipe(
     startWith(""),
     map(value => this._filter(value))
+  );
+
+  this.filteredOptionsEnd = this.myControlEnd.valueChanges.pipe(
+    startWith(""),
+    map(valueEnd => this._filterEnd(valueEnd))
   );
 }
 
@@ -113,24 +88,90 @@ private _filter(value: any) {
   if (typeof value === "string") {
     filterValue = value.toLowerCase();
   } else {
-    filterValue = value.description.toLowerCase();
+    filterValue = value.zipcode.toLowerCase();
   }
 
   return this.options.filter(
-    option => option.description.toLowerCase().indexOf(filterValue) === 0
+    (    option: { zipcode: string; }) => option.zipcode.toLowerCase().indexOf(filterValue) === 0
   );
 }
 
-displayFn(value: any) {
-  return value ? value.description : undefined;
+
+private _filterEnd(value: any) {
+  let filterValueEnd = '';
+  if (typeof value === "string") {
+    filterValueEnd = value.toLowerCase();
+  } else {
+    filterValueEnd = value.zipcode.toLowerCase();
+  }
+
+  return this.optionsEnd.filter(
+    (    option: { zipcode: string; }) => option.zipcode.toLowerCase().indexOf(filterValueEnd) === 0
+  );
 }
+
+// displayFn(value: any) {
+//   return value ? value.zipcode : undefined;
+// }
 
 
 selectOption(e: MatAutocompleteSelectedEvent) {
+  console.log("e. st ",e)
+
   const item = e.option.value;
   console.log(item);
+  this.fromAddress = item
 }
 
+selectOptionEnd(e: MatAutocompleteSelectedEvent) {
+
+  console.log("e. ",e)
+  const item = e.option.value;
+  console.log("end ",item);
+
+  this.toAddress = item
+}
+
+displayFn(address: any) : string {
+  return address.zipcode ? address.zipcode + ', '+address.place + ', '+ address.state : ''
+}
+
+
+onSubmit(){
+
+
+  if(this.fromAddress != undefined && this.toAddress != undefined){
+    const firstCoordinate = {latitude: this.fromAddress.latitude , longitude:this.fromAddress.longitude};
+    const secondCoordinate = {latitude: this.toAddress.latitude, longitude:this.toAddress.longitude};
+
+    this.distanceInKm = Math.round((geolib.getDistance(firstCoordinate, secondCoordinate) / 1000 + 1.5) * 100) / 100 ;
+
+
+
+
+  console.log(this.distanceInKm );
+
+  this.dataService.setData('fromPoint', this.fromStreet + ', '+this.fromAddress.zipcode + ', '+this.fromAddress.place)
+  this.dataService.setData('toPoint', this.toStreet + ', '+this.toAddress.zipcode + ', '+this.toAddress.place)
+  this.dataService.setData('distanceInKm', this.distanceInKm)
+  // this.dataService.setData('price', )
+
+  this.router.navigate(['/products']);
+
+  }
+
+
+  // console.log("fromAddress ", this.fromAddress)
+  // console.log("toAddress ", this.toAddress)
+
+  // console.log("fromStreet ", this.fromStreet)
+  // console.log("toStreet ", this.toStreet)
+}
+
+calculateTimeToDoneTrip(distance : number){
+
+  return Math.round(distance / 10 * 60 )
+}
 
 
 }

@@ -1,6 +1,6 @@
 <nav class=" mainnavbar navbar navbar-expand-lg navbar-dark p-3" id="headerNav">
   <div class="container-fluid">
-    <a class="navbar-brand d-block d-lg-none" href="#" (click)="MainScreenOn()">
+    <a class="navbar-brand d-block d-lg-none" routerLink="">
       <img src="/static_files/images/logos/logo_2_white.png" height="80"/>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -11,42 +11,28 @@
     <div class=" collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto ">
         <li class="nav-item">
-          <a class="nav-link mx-2 " href="#" (click)="TripOn()">Trip</a>
+           <a class="nav-link mx-2 " routerLink="">Trip</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#" (click)="CalculateElectricityOn()">Calculate electricity</a>
+          <a class="nav-link mx-2 " routerLink="/calculate_electricity">Calculate electricity</a>
         </li>
         <li class="nav-item d-none d-lg-block">
-          <a class="nav-link mx-2" href="#" (click)="MainScreenOn()">
+          <a routerLink="">
             <img src="../assets/img/sc_notext.png"/>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" href="#" (click)="ProductsOn()">Products</a>
+          <a class="nav-link mx-2 " routerLink="/products">Products</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link mx-2" href="#" (click)="TestingDriveOn()">Testing drive</a>
-        </li>
+<!--        <li class="nav-item dropdown">-->
+<!--          <a class="nav-link mx-2 " routerLink="/testing_drive">Testing Drive</a>-->
+<!--        </li>-->
       </ul>
     </div>
   </div>
 </nav>
 <br>
-<div *ngIf="navPagesUpdated.isTrip">
-  <app-trip></app-trip>
-</div>
-<div *ngIf="navPagesUpdated.isCalculateElectricity">
-  <app-devices-consume-calculator></app-devices-consume-calculator>
-</div>
-<div *ngIf="navPagesUpdated.isProducts">
-  <app-products></app-products>
-</div>
-<div *ngIf="navPagesUpdated.isTestingDrive">
-  <app-increment-price></app-increment-price>
-  <div class="animation">
-    <img class="animation-scooter" src="assets/img/sc_notext.png">
-  </div>
-</div>
+<router-outlet></router-outlet>
 <footer>
   <img class="footer"src="../assets/img/footer2.png">
 </footer>

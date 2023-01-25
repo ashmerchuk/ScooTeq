@@ -1,33 +1,89 @@
-<p>trip works!</p>
-
-
-
 <!-- <ng-select [items]="simpleItems"
          [(ngModel)]="selectedSimpleItem"
          [searchable]="true"
          >
 </ng-select> -->
 
-<div style="margin-left:50px">
+<div class="trip">
+  <div style="margin: 0 25% 0 25%">
+    <form class="example-form">
+      <div class="row" style="width:100%">
+        <div class="col-6">
+          <mat-form-field id="form-field-1" class="example-full-width" appearance="fill">
+            <mat-label>Start Point</mat-label>
+            <mat-icon matPrefix>my_location</mat-icon>
+            <input type="text"
+                   placeholder="Zipcodes Ex:20095..."
+                   aria-label="Address"
+                   matInput
+                   [formControl]="myControl"
+                   [matAutocomplete]="auto">
+            <i class="fa fa-envelope icon"></i>
+            <mat-autocomplete id="mat-autocomplete-1" #auto="matAutocomplete" [displayWith]="displayFn"
+                              (optionSelected)='selectOption($event)'>
+              <mat-option id="mat-option-1" *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.zipcode }} , {{option.place}} , {{option.state}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Street Nr.</mat-label>
+            <mat-icon matPrefix>my_location</mat-icon>
+            <input matInput placeholder="Ex. Eupener Stieg 18" [(ngModel)]="fromStreet" name="fromStreet">
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Number</mat-label>
-      <input type="text"
 
-             placeholder="Pick one"
-             aria-label="Number"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete"  (optionSelected)='selectOption($event)'>
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.description">
-          {{option.description}}
-        </mat-option>
+  <div style="margin: 0 25% 0 25%">
+    <form (ngSubmit)="onSubmit()" class="example-form">
+      <div class="row" style="width:100%">
+        <div class="col-6">
+          <mat-form-field id="form-field-2" class="example-full-width" appearance="fill">
+            <mat-icon matPrefix>place</mat-icon>
+            <mat-label>End Point</mat-label>
+            <input type="text"
+                   placeholder="Zip codes"
+                   aria-label="Address"
+                   matInput
+                   [formControl]="myControlEnd"
+                   [matAutocomplete]="autoEnd">
+            <mat-autocomplete id="mat-autocomplete-2" #autoEnd="matAutocomplete" [displayWith]="displayFn"
+                              (optionSelected)='selectOptionEnd($event)'>
+              <mat-option id="mat-option-2" *ngFor="let optionEnd of filteredOptionsEnd | async" [value]="optionEnd">
+                {{optionEnd.zipcode }} , {{optionEnd.place}} , {{optionEnd.state}}
+              </mat-option>
 
-      </mat-autocomplete>
-    </mat-form-field>
-  </form>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+        <div class="col">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Street Nr.</mat-label>
+            <mat-icon matPrefix>place</mat-icon>
+            <input matInput placeholder="Ex. Eupener Stieg 95" [(ngModel)]="toStreet" name="toStreet">
+          </mat-form-field>
+          <button class="btn send" style="float: right" type="submit">
+            <mat-label>Go</mat-label>
+            <mat-icon matPrefix>near_me</mat-icon>
+          </button>
+
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!--  <div>distanceInKm {{distanceInKm}}</div>-->
+  <div *ngIf="distanceInKm != undefined">If you drive at 10km/h, it will take
+    you {{calculateTimeToDoneTrip(distanceInKm)}}  minutes to complete the Trip
+  </div>
+
 
 </div>
 
