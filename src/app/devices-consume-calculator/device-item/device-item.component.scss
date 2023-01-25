@@ -1,0 +1,26 @@
+.device-item-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  background-color: #f9fddade;
+}
+
+.item-name {
+  font-size: 24px;
+}
+
+.options-area {
+  display: flex;
+  cursor: pointer;
+
+  .mat-icon {
+    height: 15px;
+  }
+  .material-icons {
+    font-size: 15px;
+  }
+}

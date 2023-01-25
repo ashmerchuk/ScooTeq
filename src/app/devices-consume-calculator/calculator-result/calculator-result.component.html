@@ -1,0 +1,7 @@
+  <mat-card class="calculator-results-container">
+    <div class="main-result-container"  *ngIf="conditions">
+      <h3>{{totalCost | number: '1.2-2'}}€</h3>
+      <h3 >{{totalKwh | number: '1.2-2'}}KWh</h3>
+    </div>
+    <mat-hint *ngIf="!conditions">Choose some conditions</mat-hint>
+  </mat-card>
