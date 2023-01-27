@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  chargeSmalScooter(){
+  chargeSmallScooter(){
     this.battery.batteryStatus = 1200
 
     axios.post("http://localhost:8690/saveBattery", this.battery).then(re => {
