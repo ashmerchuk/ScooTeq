@@ -53,4 +53,11 @@ export class AdminComponent implements OnInit {
      });
       console.log("charge bike Scooter")
   }
+
+  playChargingSound(){
+    let audio = new Audio();
+    audio.src = "../assets/audio/ChargingSound.mp3";
+    audio.load();
+    audio.play();
+  }
 }
