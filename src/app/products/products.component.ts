@@ -19,14 +19,14 @@ export class ProductsComponent {
 
   constructor(private dataService: DataService,private router: Router) { }
 
-  chooseScooteSmall(){
+  chooseScooterSmall(){
     this.dataService.setData('priceProMinute', (0.21))
     this.dataService.setData('scooterType', 'smal')
     this.router.navigate(['/testing_drive']);
 
   }
 
-  chooseScooteBike(){
+  chooseScooterBike(){
     this.dataService.setData('priceProMinute', (0.31))
     this.dataService.setData('scooterType', 'bike')
 
