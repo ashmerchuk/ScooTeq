@@ -36,6 +36,7 @@ import { CalculatorResultComponent } from './devices-consume-calculator/calculat
 import { MatListModule } from '@angular/material/list'
 
 import { RouterModule, Routes } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const myRoutes: Routes = [
   { path: '', component: TripComponent },
@@ -79,6 +80,7 @@ const myRoutes: Routes = [
     MatListModule,
     RouterModule,
     RouterModule.forRoot(myRoutes),
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

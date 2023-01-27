@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import axios from 'axios';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-admin',
@@ -8,6 +9,7 @@ import axios from 'axios';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  constructor(private _snackBar: MatSnackBar) {}
 
 
   battery = {
@@ -33,8 +35,10 @@ export class AdminComponent implements OnInit {
     }).catch(er => {
       console.log("er")
     });
-
-    console.log("charge smal Scooter")
+    this._snackBar.open("E-Scooter has charged to 100% of Battery", "Close",{
+      duration: 2000,
+    });
+    console.log("charge small Scooter")
   }
 
   chargeBikeScooter(){
@@ -44,7 +48,9 @@ export class AdminComponent implements OnInit {
       }).catch(er => {
         console.log("er")
       });
-
+     this._snackBar.open("E-Bike has charged to 100% of Battery","Close",{
+       duration: 2000,
+     });
       console.log("charge bike Scooter")
   }
 }

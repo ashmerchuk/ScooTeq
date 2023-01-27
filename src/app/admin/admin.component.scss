@@ -51,9 +51,14 @@ h1{
 }
 
 .text {
-  //background-color: rgb(125, 125, 125);
   color: white;
   font-size: 48px;
   font-family: Roboto;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+mat-form-field {
+  margin-right: 12px;
+}
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+  color: red;
 }
