@@ -138,7 +138,7 @@ export class IncrementPriceComponent implements OnInit {
     this.timeoutId = setTimeout(() => {
       this.incrementPrice()
 
-    }, 1000);
+    }, 500);
     return this.timeoutId
   }
   pausePrice() {
