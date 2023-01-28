@@ -12,7 +12,7 @@
           <mat-form-field id="form-field-1" class="example-full-width" appearance="fill">
             <mat-label>Start Point</mat-label>
             <mat-icon matPrefix>my_location</mat-icon>
-            <input type="text"
+            <input required type="text"
                    placeholder="Zipcodes Ex:20095..."
                    aria-label="Address"
                    matInput
@@ -31,7 +31,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Street Nr.</mat-label>
             <mat-icon matPrefix>my_location</mat-icon>
-            <input matInput placeholder="Ex. Eupener Stieg 18" [(ngModel)]="fromStreet" name="fromStreet">
+            <input matInput placeholder="Ex. Eupener Stieg 18" [(ngModel)]="fromStreet" name="fromStreet" required>
           </mat-form-field>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <mat-form-field id="form-field-2" class="example-full-width" appearance="fill">
             <mat-icon matPrefix>place</mat-icon>
             <mat-label>End Point</mat-label>
-            <input type="text"
+            <input required type="text"
                    placeholder="Zip codes"
                    aria-label="Address"
                    matInput
@@ -66,7 +66,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Street Nr.</mat-label>
             <mat-icon matPrefix>place</mat-icon>
-            <input matInput placeholder="Ex. Eupener Stieg 95" [(ngModel)]="toStreet" name="toStreet">
+            <input matInput placeholder="Ex. Eupener Stieg 95" [(ngModel)]="toStreet" name="toStreet" required>
           </mat-form-field>
           <button class="btn send" style="float: right" type="submit">
             <mat-label>Go</mat-label>
